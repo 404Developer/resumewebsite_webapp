@@ -36,12 +36,6 @@
     }
 }
 
-.test {
-    animation: fade-out1 2s;
-    animation-iteration-count: 1;
-    opacity: 0;
-}
-
 .div1 {
     width: 250px;
     height: 110px;
@@ -62,4 +56,8 @@
 .anim2 {
     animation: fade-out 2s infinite;
     animation-iteration-count: .5;
+}
+
+.test {
+    animation: fade-out1 .4s forwards;
 }

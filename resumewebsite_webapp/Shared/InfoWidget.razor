@@ -1,42 +1,45 @@
-<div class="div1 float-right mt-5 shadow pt-2 pl-2 pb-2 pr-2 sticky-top @(AnimationCSS) @(AnimationCSS1)" @onmouseover="HandleMouseOver">
-    @code
+@if (_show)
+{
+    <div class="div1 float-right mt-5 shadow pt-2 pl-2 pb-2 pr-2 sticky-top @(AnimationCSS) @(AnimationCSS1)" @onmouseover=OnMouseOver>
+        <div class="container position-absolute" style="max-width: 235px;">
+            <div class="row" style="max-width: 250px;">
+                <div class="col pr-0">
+                    <button type="button" class="close float-right" aria-label="Close" @onclick="OnClickAsync">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-1 pr-2">
+                    <i class="fas fa-info fa-2x"></i>
+                </div>
+                <div class="col-8 pl-4">
+                    <h4><p class="font-weight-bold mb-0 pt-1">Information</p></h4>
+                </div>
+            </div>
+            <div class="row">
+                <p class="text-center mt-1 mb-0 font-italic">I was made with ASP .NET and Blazor, deployed on AWS!</p>
+            </div>
+        </div>
+    </div>
+}
+@code
     {
-        public string AnimationCSS = "anim1";
+    string AnimationCSS1 = string.Empty;
+    string AnimationCSS = "anim1";
+    bool _show = true;
 
-        void HandleMouseOver()
-        {
-            AnimationCSS = "anim2";
-        }
+    async Task OnClickAsync()
+    {
+        AnimationCSS1 = "test";
+        StateHasChanged();
+
+        await Task.Delay(TimeSpan.FromSeconds(2));
+        _show = false;
+        StateHasChanged();
     }
-    <div class="container position-absolute" style="max-width: 235px;">
-        <div class="row" style="max-width: 250px;">
-            <div class="col pr-0">
-                <button type="button" class="close float-right" aria-label="Close" @onclick="HandleMouseClick">
-                    @code
-                    {
-                        public string AnimationCSS1 = string.Empty;
 
-                        void HandleMouseClick()
-                        {
-                            AnimationCSS1 = "test";
-                        }
-                    }
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-1 pr-2">
-                <i class="fas fa-info fa-2x"></i>
-            </div>
-            <div class="col-8 pl-4">
-                <h4><p class="font-weight-bold mb-0 pt-1">Information</p></h4>
-            </div>
-        </div>
-        <div class="row">
-            <p class="text-center mt-1 mb-0 font-italic">I was made with ASP .NET and Blazor, deployed on AWS!</p>
-        </div>
-    </div>
-</div>
+    void OnMouseOver() => AnimationCSS = "anim2";
+}
