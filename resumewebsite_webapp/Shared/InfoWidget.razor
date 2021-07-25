@@ -1,19 +1,26 @@
-<div class="div1 float-right mt-5 shadow pt-2 pl-2 pb-2 pr-2 sticky-top @(AnimationCSS)" @onclick="HandleMouseOver">
+<div class="div1 float-right mt-5 shadow pt-2 pl-2 pb-2 pr-2 sticky-top @(AnimationCSS) @(AnimationCSS1)" @onmouseover="HandleMouseOver">
     @code
     {
         public string AnimationCSS = "anim1";
 
         void HandleMouseOver()
         {
-            AnimationCSS = string.Empty;
-            Console.WriteLine("Working");
-            StateHasChanged();
+            AnimationCSS = "anim2";
         }
     }
     <div class="container position-absolute" style="max-width: 235px;">
         <div class="row" style="max-width: 250px;">
             <div class="col pr-0">
-                <button type="button" class="close float-right" aria-label="Close">
+                <button type="button" class="close float-right" aria-label="Close" @onclick="HandleMouseClick">
+                    @code
+                    {
+                        public string AnimationCSS1 = string.Empty;
+
+                        void HandleMouseClick()
+                        {
+                            AnimationCSS1 = "test";
+                        }
+                    }
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>

@@ -19,7 +19,7 @@ ul {
 }
 
 .lipad:before {
-    content: "• ";
+    content: "â€¢ ";
     font-size: 12pt;
 }
 
